@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<title>Admin Morfosign</title>
+<style>
+body {
+  font-family: Poppins;
+  background: linear-gradient(135deg, #ff7a18, #ffb347);
+  padding: 30px;
+  color: white;
+}
+
+.box {
+  background: rgba(255,255,255,0.15);
+  backdrop-filter: blur(12px);
+  padding: 20px;
+  border-radius: 15px;
+}
+
+table {
+  width: 100%;
+  margin-top: 20px;
+  border-collapse: collapse;
+}
+
+th, td {
+  padding: 10px;
+  border-bottom: 1px solid rgba(255,255,255,0.3);
+}
+
+button {
+  margin-top: 15px;
+  padding: 10px;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+}
+
+.clear {
+  background: red;
+  color: white;
+}
+
+.accept {
+  background-color: #4CAF50;
+  color: white;
+  margin-right: 5px;
+}
+
+.reject {
+  background-color: #f44336;
+  color: white;
+}
+</style>
+</head>
+
+<body>
+
+<div class="box">
+<h2>📊 Lead Dashboard</h2>
+
+<table>
+<thead>
+<tr>
+<th>Nama</th>
+<th>Email</th>
+<th>Waktu</th>
+<th>Aksi</th>
+</tr>
+</thead>
+
+<tbody id="data"></tbody>
+</table>
+
+<button class="clear" onclick="clearData()">Hapus Semua</button>
+</div>
+
+<script>
+let leads = JSON.parse(localStorage.getItem("leads") || "[]");
+
+let table = document.getElementById("data");
+
+function renderLeads() {
+  table.innerHTML = "";
+  leads.forEach((l, index) => {
+    table.innerHTML += `
+      <tr>
+        <td>${l.nama}</td>
+        <td>${l.email}</td>
+        <td>${l.time}</td>
+        <td>
+          <button class="accept" onclick="acceptLead(${index})">Terima</button>
+          <button class="reject" onclick="rejectLead(${index})">Tolak</button>
+        </td>
+      </tr>`;
+  });
+}
+
+function acceptLead(i) {
+  alert(`Lead ${leads[i].nama} diterima.`);
+  // Optional: lakukan sesuatu, seperti menghapus lead dari list
+  // leads.splice(i, 1);
+  // saveLeads();
+  // renderLeads();
+}
+
+function rejectLead(i) {
+  alert(`Lead ${leads[i].nama} ditolak.`);
+  // Optional: lakukan sesuatu, seperti menghapus lead dari list
+  // leads.splice(i, 1);
+  // saveLeads();
+  // renderLeads();
+}
+
+function saveLeads() {
+  localStorage.setItem("leads", JSON.stringify(leads));
+}
+
+function clearData() {
+  localStorage.removeItem("leads");
+  location.reload();
+}
+
+renderLeads();
+</script>
+
+</body>
+</html>

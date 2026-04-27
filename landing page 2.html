@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Morfosign Studio</title>
+<style>
+  /* (gunakan style dari kode kamu sebelumnya) */
+  /* ...style sama seperti sebelumnya... */
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Poppins, sans-serif;
+  }
+  body {
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: linear-gradient(135deg, #ff7a18, #ffb347);
+    overflow: hidden;
+  }
+  .blur1, .blur2 {
+    position: absolute;
+    background: rgba(255,255,255,0.2);
+    filter: blur(120px);
+  }
+  .blur1 { width: 400px; height: 400px; top: 10%; left: 10%; }
+  .blur2 { width: 300px; height: 300px; bottom: 10%; right: 10%; }
+  .card {
+    position: relative;
+    z-index: 2;
+    text-align: center;
+    padding: 40px;
+    border-radius: 20px;
+    background: rgba(255,255,255,0.2);
+    backdrop-filter: blur(15px);
+    width: 320px;
+  }
+  .logo {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    margin-bottom: 15px;
+  }
+  .btn {
+    margin-top: 20px;
+    padding: 10px 20px;
+    border-radius: 20px;
+    border: none;
+    background: white;
+    color: black;
+    cursor: pointer;
+  }
+  .social {
+    margin-top: 20px;
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+  }
+  .social a {
+    text-decoration: none;
+    font-size: 12px;
+    padding: 6px 12px;
+    border-radius: 10px;
+    background: rgba(255,255,255,0.3);
+    color: black;
+  }
+  .overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.6);
+    display: none;
+    z-index: 10;
+  }
+  .popup {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) scale(0);
+    width: 320px;
+    padding: 25px;
+    border-radius: 18px;
+    background: rgba(255,255,255,0.12);
+    backdrop-filter: blur(18px);
+    color: white;
+    text-align: center;
+    transition: 0.3s;
+    z-index: 20;
+  }
+  .popup.show {
+    transform: translate(-50%, -50%) scale(1);
+  }
+  .overlay.show {
+    display: block;
+  }
+  .popup input {
+    width: 100%;
+    margin: 8px 0;
+    padding: 10px;
+    border-radius: 10px;
+    border: none;
+    outline: none;
+  }
+  .submit-btn {
+    width: 100%;
+    padding: 10px;
+    margin-top: 10px;
+    border: none;
+    border-radius: 10px;
+    background: #00c853;
+    color: white;
+    cursor: pointer;
+  }
+  .hp {
+    display: none;
+  }
+  .copyright {
+    position: fixed;
+    bottom: 15px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 12px;
+    color: rgba(255,255,255,0.8);
+  }
+</style>
+</head>
+<body>
+
+<div class="blur1"></div>
+<div class="blur2"></div>
+
+<!-- CARD -->
+<div class="card">
+  <img src="logo.png" class="logo" alt="Logo Morfosign Studio" />
+  <h2>Morfosign Studio</h2>
+  <p>We listen, then deliver.</p>
+
+  <button class="btn" onclick="openPopup()">Request Portfolio</button>
+
+  <!-- SOCIAL MEDIA -->
+  <div class="social">
+    <a href="https://wa.me/62895701009509" target="_blank" rel="noopener">WhatsApp</a>
+    <a href="https://instagram.com/morfosignstudio" target="_blank" rel="noopener">Instagram</a>
+  </div>
+</div>
+
+<!-- OVERLAY -->
+<div id="overlay" class="overlay" onclick="closePopup()"></div>
+
+<!-- POPUP -->
+<div id="popup" class="popup">
+  <h3>🔐 Access Verification</h3>
+  <p style="font-size:12px; opacity:0.8">Fill data to continue</p>
+
+  <form action="https://formsubmit.co/bahri20102004@gmail.com" method="POST" target="_blank" onsubmit="trackLead()">
+
+    <input type="text" name="nama" id="nama" placeholder="Nama" required />
+    <input type="email" name="email" id="email" placeholder="Email" required />
+     <input type="pesan" name="pesan" id="pesan="l" required />
+    <!-- anti bot -->
+    <input type="text" name="message" class="hp" />
+
+    <!-- redirect ke Google Drive -->
+    <input type="hidden" name="_next" value="https://drive.google.com/file/d/1tNAXYQI4f0e_srJvlwGahjaIw9eOaxPw/view?usp=drive_link" />
+
+    <button class="submit-btn" type="submit">Akses Portfolio</button>
+  </form>
+</div>
+
+<!-- COPYRIGHT -->
+<div class="copyright">
+  © <span id="year"></span> Morfosign Studio
+</div>
+
+<script>
+  function openPopup() {
+    document.getElementById("popup").classList.add("show");
+    document.getElementById("overlay").classList.add("show");
+  }
+  function closePopup() {
+    document.getElementById("popup").classList.remove("show");
+    document.getElementById("overlay").classList.remove("show");
+  }
+
+  /* LEAD TRACKING */
+  function trackLead() {
+    let nama = document.getElementById("nama").value;
+    let email = document.getElementById("email").value;
+
+    let leads = JSON.parse(localStorage.getItem("leads") || "[]");
+
+    leads.push({
+      nama,
+      email,
+      time: new Date().toISOString()
+    });
+
+    localStorage.setItem("leads", JSON.stringify(leads));
+  }
+
+  /* YEAR */
+  document.getElementById("year").textContent = new Date().getFullYear();
+</script>
+
+</body>
+</html>
