@@ -1,278 +1,206 @@
 <!DOCTYPE html>
 <html lang="id">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Tavern Coffee - Concept</title>
-
-<!-- Google Font -->
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600&family=Poppins:wght@300;400;500&display=swap" rel="stylesheet">
-
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Morfosign Studio</title>
 <style>
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
-
-body {
-  font-family: 'Poppins', sans-serif;
-  background: #0f0f0f;
-  color: #f5f1ea;
-  scroll-behavior: smooth;
-}
-
-h1, h2 {
-  font-family: 'Playfair Display', serif;
-}
-
-section {
-  padding: 80px 10%;
-}
-
-/* HERO */
-.hero {
-  height: 100vh;
-  background: url('https://images.unsplash.com/photo-1509042239860-f550ce710b93') center/cover no-repeat;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  text-align: center;
-  position: relative;
-}
-
-.hero::after {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background: rgba(0,0,0,0.6);
-}
-
-.hero-content {
-  position: relative;
-  z-index: 2;
-}
-
-.hero h1 {
-  font-size: 64px;
-}
-
-.hero p {
-  margin: 20px 0;
-}
-
-.btn {
-  background: #c8a97e;
-  padding: 12px 24px;
-  color: black;
-  text-decoration: none;
-  border-radius: 4px;
-}
-
-/* STORY */
-.story {
-  display: flex;
-  gap: 40px;
-  align-items: center;
-}
-
-.story img {
-  width: 50%;
-  border-radius: 10px;
-}
-
-.story-text {
-  width: 50%;
-}
-
-/* MENU */
-.menu {
-  display: flex;
-  gap: 20px;
-}
-
-.card {
-  flex: 1;
-  position: relative;
-  overflow: hidden;
-}
-
-.card img {
-  width: 100%;
-  height: 300px;
-  object-fit: cover;
-  transition: 0.5s;
-}
-
-.card:hover img {
-  transform: scale(1.1);
-}
-
-.card-text {
-  position: absolute;
-  bottom: 20px;
-  left: 20px;
-}
-
-/* GALLERY */
-.gallery {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 10px;
-}
-
-.gallery img {
-  width: 100%;
-  height: 200px;
-  object-fit: cover;
-}
-
-/* LOCATION */
-.location {
-  display: flex;
-  gap: 40px;
-}
-
-.location iframe {
-  width: 50%;
-  height: 300px;
-}
-
-.location-text {
-  width: 50%;
-}
-
-/* CTA */
-.cta {
-  text-align: center;
-  background: #3b2a23;
-}
-
-/* FOOTER */
-footer {
-  text-align: center;
-  padding: 20px;
-  background: #000;
-}
-
-/* ANIMATION */
-.fade {
-  opacity: 0;
-  transform: translateY(40px);
-  transition: 1s;
-}
-
-.fade.show {
-  opacity: 1;
-  transform: translateY(0);
-}
-
-/* RESPONSIVE */
-@media(max-width: 768px) {
-  .story, .menu, .location {
-    flex-direction: column;
+  /* (gunakan style dari kode kamu sebelumnya) */
+  /* ...style sama seperti sebelumnya... */
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Poppins, sans-serif;
   }
-
-  .story img, .story-text,
-  .location iframe, .location-text {
+  body {
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: linear-gradient(135deg, #ff7a18, #ffb347);
+    overflow: hidden;
+  }
+  .blur1, .blur2 {
+    position: absolute;
+    background: rgba(255,255,255,0.2);
+    filter: blur(120px);
+  }
+  .blur1 { width: 400px; height: 400px; top: 10%; left: 10%; }
+  .blur2 { width: 300px; height: 300px; bottom: 10%; right: 10%; }
+  .card {
+    position: relative;
+    z-index: 2;
+    text-align: center;
+    padding: 40px;
+    border-radius: 20px;
+    background: rgba(255,255,255,0.2);
+    backdrop-filter: blur(15px);
+    width: 320px;
+  }
+  .logo {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    margin-bottom: 15px;
+  }
+  .btn {
+    margin-top: 20px;
+    padding: 10px 20px;
+    border-radius: 20px;
+    border: none;
+    background: white;
+    color: black;
+    cursor: pointer;
+  }
+  .social {
+    margin-top: 20px;
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+  }
+  .social a {
+    text-decoration: none;
+    font-size: 12px;
+    padding: 6px 12px;
+    border-radius: 10px;
+    background: rgba(255,255,255,0.3);
+    color: black;
+  }
+  .overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.6);
+    display: none;
+    z-index: 10;
+  }
+  .popup {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) scale(0);
+    width: 320px;
+    padding: 25px;
+    border-radius: 18px;
+    background: rgba(255,255,255,0.12);
+    backdrop-filter: blur(18px);
+    color: white;
+    text-align: center;
+    transition: 0.3s;
+    z-index: 20;
+  }
+  .popup.show {
+    transform: translate(-50%, -50%) scale(1);
+  }
+  .overlay.show {
+    display: block;
+  }
+  .popup input {
     width: 100%;
+    margin: 8px 0;
+    padding: 10px;
+    border-radius: 10px;
+    border: none;
+    outline: none;
   }
-
-  .hero h1 {
-    font-size: 36px;
+  .submit-btn {
+    width: 100%;
+    padding: 10px;
+    margin-top: 10px;
+    border: none;
+    border-radius: 10px;
+    background: #00c853;
+    color: white;
+    cursor: pointer;
   }
-}
+  .hp {
+    display: none;
+  }
+  .copyright {
+    position: fixed;
+    bottom: 15px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 12px;
+    color: rgba(255,255,255,0.8);
+  }
 </style>
 </head>
-
 <body>
 
-<!-- HERO -->
-<section class="hero">
-  <div class="hero-content">
-    <h1>TAVERN COFFEE</h1>
-    <p>More Than Coffee, It's Experience</p>
-    <a href="#menu" class="btn">Explore Menu</a>
-  </div>
-</section>
+<div class="blur1"></div>
+<div class="blur2"></div>
 
-<!-- STORY -->
-<section class="story fade">
-  <img src="https://images.unsplash.com/photo-1495474472287-4d71bcdd2085">
-  <div class="story-text">
-    <h2>Crafted With Passion</h2>
-    <p>Kopi bukan sekadar minuman. Ini adalah pengalaman, cerita, dan koneksi.</p>
-  </div>
-</section>
+<!-- CARD -->
+<div class="card">
+  <img src="logo.png" class="logo" alt="Logo Morfosign Studio" />
+  <h2>Morfosign Studio</h2>
+  <p>We listen, then deliver.</p>
 
-<!-- MENU -->
-<section id="menu" class="menu fade">
-  <div class="card">
-    <img src="https://images.unsplash.com/photo-1511920170033-f8396924c348">
-    <div class="card-text">
-      <h3>Latte</h3>
-      <p>Rp 28K</p>
-    </div>
-  </div>
-  <div class="card">
-    <img src="https://images.unsplash.com/photo-1509042239860-f550ce710b93">
-    <div class="card-text">
-      <h3>Espresso</h3>
-      <p>Rp 20K</p>
-    </div>
-  </div>
-  <div class="card">
-    <img src="https://images.unsplash.com/photo-1461023058943-07fcbe16d735">
-    <div class="card-text">
-      <h3>Americano</h3>
-      <p>Rp 22K</p>
-    </div>
-  </div>
-</section>
+  <button class="btn" onclick="openPopup()">Request Portfolio</button>
 
-<!-- GALLERY -->
-<section class="gallery fade">
-  <img src="https://images.unsplash.com/photo-1509042239860-f550ce710b93">
-  <img src="https://images.unsplash.com/photo-1495474472287-4d71bcdd2085">
-  <img src="https://images.unsplash.com/photo-1511920170033-f8396924c348">
-  <img src="https://images.unsplash.com/photo-1461023058943-07fcbe16d735">
-  <img src="https://images.unsplash.com/photo-1521305916504-4a1121188589">
-  <img src="https://images.unsplash.com/photo-1442512595331-e89e73853f31">
-</section>
-
-<!-- LOCATION -->
-<section class="location fade">
-  <iframe src="https://maps.google.com/maps?q=banjarmasin&t=&z=13&ie=UTF8&iwloc=&output=embed"></iframe>
-  <div class="location-text">
-    <h2>Visit Us</h2>
-    <p>Banjarmasin, Kalimantan Selatan</p>
-    <p>Open Daily 08:00 - 23:00</p>
+  <!-- SOCIAL MEDIA -->
+  <div class="social">
+    <a href="https://wa.me/62895701009509" target="_blank" rel="noopener">WhatsApp</a>
+    <a href="https://instagram.com/morfosignstudio" target="_blank" rel="noopener">Instagram</a>
   </div>
-</section>
+</div>
 
-<!-- CTA -->
-<section class="cta fade">
-  <h2>Reserve Your Spot</h2>
-  <br>
-  <a href="https://wa.me/628xxxxxxxxxx" class="btn">Book via WhatsApp</a>
-</section>
+<!-- OVERLAY -->
+<div id="overlay" class="overlay" onclick="closePopup()"></div>
 
-<!-- FOOTER -->
-<footer>
-  <p>© 2026 Tavern Coffee Concept</p>
-</footer>
+<!-- POPUP -->
+<div id="popup" class="popup">
+  <h3>🔐 Access Verification</h3>
+  <p style="font-size:12px; opacity:0.8">Fill data to continue</p>
+
+  <form action="https://formsubmit.co/bahri20102004@gmail.com" method="POST" target="_blank" onsubmit="trackLead()">
+
+    <input type="text" name="nama" id="nama" placeholder="Nama" required />
+    <input type="email" name="email" id="email" placeholder="Email" required />
+        <!-- anti bot -->
+    <input type="text" name="message" class="hp" />
+
+    <!-- redirect ke Google Drive -->
+    <input type="hidden" name="_next" value="https://drive.google.com/file/d/1tNAXYQI4f0e_srJvlwGahjaIw9eOaxPw/view?usp=drive_link" />
+
+    <button class="submit-btn" type="submit">Akses Portfolio</button>
+  </form>
+</div>
+
+<!-- COPYRIGHT -->
+<div class="copyright">
+  © <span id="year"></span> Morfosign Studio
+</div>
 
 <script>
-const fades = document.querySelectorAll('.fade');
+  function openPopup() {
+    document.getElementById("popup").classList.add("show");
+    document.getElementById("overlay").classList.add("show");
+  }
+  function closePopup() {
+    document.getElementById("popup").classList.remove("show");
+    document.getElementById("overlay").classList.remove("show");
+  }
 
-window.addEventListener('scroll', () => {
-  fades.forEach(el => {
-    const top = el.getBoundingClientRect().top;
-    if(top < window.innerHeight - 100){
-      el.classList.add('show');
-    }
-  });
-});
+  /* LEAD TRACKING */
+  function trackLead() {
+    let nama = document.getElementById("nama").value;
+    let email = document.getElementById("email").value;
+
+    let leads = JSON.parse(localStorage.getItem("leads") || "[]");
+
+    leads.push({
+      nama,
+      email,
+      time: new Date().toISOString()
+    });
+
+    localStorage.setItem("leads", JSON.stringify(leads));
+  }
+
+  /* YEAR */
+  document.getElementById("year").textContent = new Date().getFullYear();
 </script>
 
 </body>
