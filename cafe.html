@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Tavern Coffee - Concept</title>
+
+<!-- Google Font -->
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600&family=Poppins:wght@300;400;500&display=swap" rel="stylesheet">
+
+<style>
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Poppins', sans-serif;
+  background: #0f0f0f;
+  color: #f5f1ea;
+  scroll-behavior: smooth;
+}
+
+h1, h2 {
+  font-family: 'Playfair Display', serif;
+}
+
+section {
+  padding: 80px 10%;
+}
+
+/* HERO */
+.hero {
+  height: 100vh;
+  background: url('https://images.unsplash.com/photo-1509042239860-f550ce710b93') center/cover no-repeat;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  position: relative;
+}
+
+.hero::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: rgba(0,0,0,0.6);
+}
+
+.hero-content {
+  position: relative;
+  z-index: 2;
+}
+
+.hero h1 {
+  font-size: 64px;
+}
+
+.hero p {
+  margin: 20px 0;
+}
+
+.btn {
+  background: #c8a97e;
+  padding: 12px 24px;
+  color: black;
+  text-decoration: none;
+  border-radius: 4px;
+}
+
+/* STORY */
+.story {
+  display: flex;
+  gap: 40px;
+  align-items: center;
+}
+
+.story img {
+  width: 50%;
+  border-radius: 10px;
+}
+
+.story-text {
+  width: 50%;
+}
+
+/* MENU */
+.menu {
+  display: flex;
+  gap: 20px;
+}
+
+.card {
+  flex: 1;
+  position: relative;
+  overflow: hidden;
+}
+
+.card img {
+  width: 100%;
+  height: 300px;
+  object-fit: cover;
+  transition: 0.5s;
+}
+
+.card:hover img {
+  transform: scale(1.1);
+}
+
+.card-text {
+  position: absolute;
+  bottom: 20px;
+  left: 20px;
+}
+
+/* GALLERY */
+.gallery {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 10px;
+}
+
+.gallery img {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+}
+
+/* LOCATION */
+.location {
+  display: flex;
+  gap: 40px;
+}
+
+.location iframe {
+  width: 50%;
+  height: 300px;
+}
+
+.location-text {
+  width: 50%;
+}
+
+/* CTA */
+.cta {
+  text-align: center;
+  background: #3b2a23;
+}
+
+/* FOOTER */
+footer {
+  text-align: center;
+  padding: 20px;
+  background: #000;
+}
+
+/* ANIMATION */
+.fade {
+  opacity: 0;
+  transform: translateY(40px);
+  transition: 1s;
+}
+
+.fade.show {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* RESPONSIVE */
+@media(max-width: 768px) {
+  .story, .menu, .location {
+    flex-direction: column;
+  }
+
+  .story img, .story-text,
+  .location iframe, .location-text {
+    width: 100%;
+  }
+
+  .hero h1 {
+    font-size: 36px;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-content">
+    <h1>TAVERN COFFEE</h1>
+    <p>More Than Coffee, It's Experience</p>
+    <a href="#menu" class="btn">Explore Menu</a>
+  </div>
+</section>
+
+<!-- STORY -->
+<section class="story fade">
+  <img src="https://images.unsplash.com/photo-1495474472287-4d71bcdd2085">
+  <div class="story-text">
+    <h2>Crafted With Passion</h2>
+    <p>Kopi bukan sekadar minuman. Ini adalah pengalaman, cerita, dan koneksi.</p>
+  </div>
+</section>
+
+<!-- MENU -->
+<section id="menu" class="menu fade">
+  <div class="card">
+    <img src="https://images.unsplash.com/photo-1511920170033-f8396924c348">
+    <div class="card-text">
+      <h3>Latte</h3>
+      <p>Rp 28K</p>
+    </div>
+  </div>
+  <div class="card">
+    <img src="https://images.unsplash.com/photo-1509042239860-f550ce710b93">
+    <div class="card-text">
+      <h3>Espresso</h3>
+      <p>Rp 20K</p>
+    </div>
+  </div>
+  <div class="card">
+    <img src="https://images.unsplash.com/photo-1461023058943-07fcbe16d735">
+    <div class="card-text">
+      <h3>Americano</h3>
+      <p>Rp 22K</p>
+    </div>
+  </div>
+</section>
+
+<!-- GALLERY -->
+<section class="gallery fade">
+  <img src="https://images.unsplash.com/photo-1509042239860-f550ce710b93">
+  <img src="https://images.unsplash.com/photo-1495474472287-4d71bcdd2085">
+  <img src="https://images.unsplash.com/photo-1511920170033-f8396924c348">
+  <img src="https://images.unsplash.com/photo-1461023058943-07fcbe16d735">
+  <img src="https://images.unsplash.com/photo-1521305916504-4a1121188589">
+  <img src="https://images.unsplash.com/photo-1442512595331-e89e73853f31">
+</section>
+
+<!-- LOCATION -->
+<section class="location fade">
+  <iframe src="https://maps.google.com/maps?q=banjarmasin&t=&z=13&ie=UTF8&iwloc=&output=embed"></iframe>
+  <div class="location-text">
+    <h2>Visit Us</h2>
+    <p>Banjarmasin, Kalimantan Selatan</p>
+    <p>Open Daily 08:00 - 23:00</p>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="cta fade">
+  <h2>Reserve Your Spot</h2>
+  <br>
+  <a href="https://wa.me/628xxxxxxxxxx" class="btn">Book via WhatsApp</a>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <p>© 2026 Tavern Coffee Concept</p>
+</footer>
+
+<script>
+const fades = document.querySelectorAll('.fade');
+
+window.addEventListener('scroll', () => {
+  fades.forEach(el => {
+    const top = el.getBoundingClientRect().top;
+    if(top < window.innerHeight - 100){
+      el.classList.add('show');
+    }
+  });
+});
+</script>
+
+</body>
+</html>
