@@ -45,6 +45,7 @@
     margin-bottom: 15px;
   }
   .btn {
+    display: inline-block;
     margin-top: 20px;
     padding: 10px 20px;
     border-radius: 20px;
@@ -52,6 +53,7 @@
     background: white;
     color: black;
     cursor: pointer;
+    text-decoration: none;
   }
   .social {
     margin-top: 20px;
@@ -110,7 +112,7 @@
     border: none;
     border-radius: 10px;
     background: #00c853;
-    color: white;
+ action="https://formsubmit.co/bahri20102004@gmail.com    color: white;
     cursor: pointer;
   }
   .hp {
@@ -139,6 +141,15 @@
 
   <button class="btn" onclick="openPopup()">Request Portfolio</button>
 
+  <a 
+  href="https://drive.google.com/file/d/1tNAXYQI4f0e_srJvlwGahjaIw9eOaxPw/view?usp=drive_link" 
+  target="_blank"
+  class="btn"
+  style="display:inline-block; text-decoration:none;"
+>
+  Request Portfolio
+</a>
+
   <!-- SOCIAL MEDIA -->
   <div class="social">
     <a href="https://wa.me/62895701009509" target="_blank" rel="noopener">WhatsApp</a>
@@ -147,33 +158,32 @@
 </div>
 
 <!-- OVERLAY -->
-<div id="overlay" class="overlay" onclick="closePopup()"></div>
+<!-- <div id="overlay" class="overlay" onclick="closePopup()"></div> -->
 
 <!-- POPUP -->
-<div id="popup" class="popup">
+<!-- <div id="popup" class="popup">
   <h3>🔐 Access Verification</h3>
   <p style="font-size:12px; opacity:0.8">Fill data to continue</p>
 
-  <form action="https://formsubmit.co/bahri20102004@gmail.com" method="POST" target="_blank" onsubmit="trackLead()">
+  <form" method="POST" target="_blank" onsubmit="trackLead()">
 
     <input type="text" name="nama" id="nama" placeholder="Nama" required />
     <input type="email" name="email" id="email" placeholder="Email" required />
-        <!-- anti bot -->
+    
     <input type="text" name="message" class="hp" />
 
-    <!-- redirect ke Google Drive -->
     <input type="hidden" name="_next" value="https://drive.google.com/file/d/1tNAXYQI4f0e_srJvlwGahjaIw9eOaxPw/view?usp=drive_link" />
 
     <button class="submit-btn" type="submit">Akses Portfolio</button>
   </form>
-</div>
+</div> -->
 
 <!-- COPYRIGHT -->
 <div class="copyright">
   © <span id="year"></span> Morfosign Studio
 </div>
 
-<script>
+<!-- <script>
   function openPopup() {
     document.getElementById("popup").classList.add("show");
     document.getElementById("overlay").classList.add("show");
@@ -201,7 +211,9 @@
 
   /* YEAR */
   document.getElementById("year").textContent = new Date().getFullYear();
+</script> -->
+<script>
+  document.getElementById("year").textContent = new Date().getFullYear();
 </script>
-
 </body>
 </html>
